@@ -22,7 +22,7 @@
     @media (min-width: 821px) { .calendar-screen .calendar-frame,.calendar-screen .calendar-detail { object-fit: cover; object-position: center top; } }
     .calendar-screen .calendar-detail { opacity: 0; pointer-events: none; will-change: opacity; transition: opacity .38s cubic-bezier(.22,1,.36,1); }
     .calendar-screen .calendar-detail.is-active { opacity: 1; }
-    .calendar-back { position: absolute; top: 2%; left: 2%; z-index: 4; display: block; width: 52px; height: 52px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: transparent; font-size: 0; line-height: 1; cursor: pointer; }
+    .calendar-back { position: absolute; top: 2%; left: 2%; z-index: 4; display: block; width: 72px; height: 72px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: transparent; font-size: 0; line-height: 1; cursor: pointer; }
     .calendar-back:hover,.calendar-back:focus-visible { background: transparent; transform: none; }
     .calendar-back:focus-visible { outline: 2px solid rgba(255,255,255,.7); outline-offset: 2px; }
     .calendar-hotspot { position: absolute; z-index: 3; top: 14.5%; height: 76.5%; border: 0; border-radius: 5%; background: transparent; cursor: pointer; }
@@ -32,7 +32,7 @@
     .calendar-hotspot[data-calendar-detail="5"] { left: 57.8%; width: 16.2%; }
     .calendar-hotspot[data-calendar-detail="6"] { left: 74%; width: 16.2%; }
     .calendar-hotspot:hover,.calendar-hotspot:focus-visible { background: transparent; outline: 0; }
-    @media (max-width: 820px) { .calendar-back { top: 1.4%; left: .7%; width: 7%; } .calendar-hotspot { top: 14.5%; height: 76.5%; } }
+    @media (max-width: 820px) { .calendar-back { top: 1.4%; left: .7%; width: 12vw; height: 12vw; } .calendar-hotspot { top: 14.5%; height: 76.5%; } }
     .countdown-screen .timer { display: flex; justify-content: space-between; gap: 12px; }
     .countdown-screen .time-section { flex: 1 1 0; min-width: 0; }
     .countdown-screen .flip-card { position: relative; height: clamp(62px,8vw,100px); overflow: hidden; border: 1px solid rgba(255,255,255,.2); border-radius: 8px; background: rgba(0,0,0,.15); box-shadow: inset 0 1px 0 rgba(255,255,255,.18),0 5px 10px rgba(0,0,0,.25); perspective: 600px; transform-style: preserve-3d; }
