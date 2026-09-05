@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Calendar">
+  <circle cx="128" cy="128" r="119" fill="#fff"/>
+  <g fill="none" stroke="#ff474d" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M69 72h118a25 25 0 0 1 25 25v91a25 25 0 0 1-25 25H69a25 25 0 0 1-25-25V97a25 25 0 0 1 25-25Z" stroke-width="18"/>
+    <path d="M44 112h168" stroke-width="18"/>
+    <path d="M79 55v34M177 55v34" stroke-width="20"/>
+  </g>
+</svg>
