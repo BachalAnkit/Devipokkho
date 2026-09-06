@@ -183,6 +183,9 @@ const playlist = [{
   name: 'Jaago Uma',
   source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Jaago.Uma.mp3'
 }, {
+  name: 'Jodi Hoi Chorkanta - Kishore Kumar',
+  source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Jodi.Hoi.Chorkanta.-.Kishore.Kumar.mp3'
+}, {
   name: 'Katha Dilam',
   source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Katha.Dilam.mp3'
 }, {
