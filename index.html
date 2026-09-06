@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260906">
+  <link rel="stylesheet" href="css/styles.css?v=20260907">
   <style>
     .screen:not(.is-active) { display: none !important; }
     .screen.is-active { display: block !important; }
@@ -99,7 +99,7 @@
     <p id="mobile-mode-description">For the best view, turn on Desktop Site in your browser. You can also continue using the mobile layout.<br><strong>And check in landscape mode for better experience.</strong></p>
     <button class="mobile-mode-notice__continue" type="button">Continue on Mobile</button>
   </aside>
-  <script src="js/app.js?v=20260906"></script>
+  <script src="js/app.js?v=20260907"></script>
   <script>
     function getCountdownTarget(now = new Date()) { const year = now.getFullYear(); const pujaStart = new Date(year, 9, 16); const pujaEnd = new Date(year, 9, 22); if (now < pujaStart) return pujaStart.getTime(); if (now < pujaEnd) return 0; return new Date(year + 1, 9, 16).getTime(); }
     let targetDate = getCountdownTarget();
