@@ -394,6 +394,7 @@ body {
   box-shadow: -18px 0 40px rgba(80, 0, 0, 0.18);
   display: flex;
   flex-direction: column;
+  overflow-y: auto; /* গ্যাপ সমস্যার সমাধানের জন্য যোগ করা হয়েছে */
 }
 
 .nav-drawer[hidden] {
@@ -484,7 +485,7 @@ body {
   width: min(42%, 460px);
   height: 18px;
   margin: 0;
-  accent-color: #ffffff; /* সাদা টাইমলাইন বার */
+  accent-color: #ffffff;
   cursor: pointer;
   transform: translateX(-50%);
 }
@@ -492,7 +493,7 @@ body {
 .time-display {
   display: flex;
   justify-content: space-between;
-  color: #000000; /* কালো টেক্সট */
+  color: #000000;
   font-size: 11px;
   font-variant-numeric: tabular-nums;
 }
@@ -503,11 +504,11 @@ body {
   left: 50%;
   bottom: calc(7% + 40px);
   width: min(42%, 460px);
-  color: #000000; /* কালো টেক্সট */
+  color: #000000;
   font-size: 12px;
   font-weight: 800;
   text-shadow: none;
-  -webkit-text-stroke: 0; /* কালো আউটলাইন মুছে দেওয়া হয়েছে */
+  -webkit-text-stroke: 0;
   transform: translateX(-50%);
 }
 
@@ -934,7 +935,7 @@ body {
 
 .pujo-quote {
   margin: auto 7% 10%;
-  padding-top: 0;
+  padding-top: 40px; /* গ্যাপ তৈরির জন্য 40px দেওয়া হয়েছে */
   color: #ffe8a6;
   font-family: Georgia, "Noto Serif Bengali", serif;
   font-size: clamp(12px, 1.05vw, 17px);
