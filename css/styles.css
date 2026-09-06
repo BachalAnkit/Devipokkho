@@ -933,14 +933,14 @@ body {
 }
 
 .pujo-quote {
-  margin: auto 9% 12%;
-  padding-top: 24px;
+  margin: auto 7% 6%;
+  padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   color: #ffe8a6;
   font-family: Georgia, "Noto Serif Bengali", serif;
-  font-size: clamp(16px, 1.35vw, 21px);
+  font-size: clamp(12px, 1.05vw, 17px);
   font-weight: 700;
-  line-height: 1.65;
+  line-height: 1.35;
   text-align: center;
   text-shadow: 0 2px 10px rgba(80, 0, 0, 0.35);
 }
