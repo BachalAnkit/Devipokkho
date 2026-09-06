@@ -560,19 +560,16 @@ function updateMahalayaTimeline() {
   mahalayaTimeline.disabled = false;
 }
 
-function formatTime(seconds, includeHours = false) {
-  if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
-  const hours = Math.floor(seconds / 3600);
+function formatTime(seconds) {
+  if (!Number.isFinite(seconds) || seconds < 0) return '--:--';
   const minutes = Math.floor(seconds / 60);
-  const minutePart = includeHours ? String(minutes % 60).padStart(2, '0') : minutes;
-  if (includeHours && hours > 0) return `${hours}:${minutePart}`;
-  return `${minutePart}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
+  return `${minutes}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
 }
 
-function updateTimeDisplay(audio, display, includeHours = false) {
+function updateTimeDisplay(audio, display) {
   const [elapsed, total] = display.querySelectorAll('span');
-  elapsed.textContent = formatTime(audio.currentTime, includeHours);
-  total.textContent = formatTime(audio.duration, includeHours);
+  elapsed.textContent = formatTime(audio.currentTime);
+  total.textContent = formatTime(audio.duration);
 }
 
 function updatePlaylistProgress() {
@@ -641,7 +638,7 @@ function renderPlaylist() {
     });
     const time = document.createElement('div');
     time.className = 'track-time time-display';
-    time.innerHTML = '<span>0:00</span><span>0:00</span>';
+    time.innerHTML = '<span>0:00</span><span>--:--</span>';
     progress.append(timeline, time);
     const controls = document.createElement('div');
     controls.className = 'track-controls';
