@@ -68,6 +68,10 @@ mahalayaTimeline.value = '0';
 mahalayaTimeline.disabled = true;
 mahalayaTimeline.setAttribute('aria-label', 'Chandipath timestamp');
 mahalayaTimeline.title = 'Seek Chandipath';
+const mahalayaTimeDisplay = document.createElement('div');
+mahalayaTimeDisplay.className = 'mahalaya-time-display time-display';
+mahalayaTimeDisplay.innerHTML = '<span>0:00</span><span>0:00</span>';
+mahalayaTimeDisplay.classList.add('is-player-hidden');
 const mahalayaControls = document.createElement('div');
 mahalayaControls.className = 'mahalaya-controls';
 mahalayaControls.setAttribute('aria-label', 'Chandipath controls');
@@ -83,7 +87,7 @@ mahalayaTimeline.classList.add('is-player-hidden');
   control.title = label;
   mahalayaControls.append(control);
 });
-mahalayaScreen.append(mahalayaTimeline, mahalayaControls);
+mahalayaScreen.append(mahalayaTimeline, mahalayaTimeDisplay, mahalayaControls);
 const songsVideo = document.querySelector('#songs-video');
 const songsEffectVideo = document.querySelector('#songs-effect-video');
 const songsScreen = document.querySelector('#page-songs');
@@ -104,6 +108,12 @@ const playlist = [{
 }, {
   name: 'Aadho Aalo Chhayate',
   source: 'https://github.com/BachalAnkit/Pujo_songs/releases/download/pujo_songs/Aadho.Aalo.Chhayte.mp3'
+}, {
+  name: 'Aay Khuku Aay - Keta Na Somay',
+  source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Aay.Khuku.Aay.-.Keta.Na.Somay.mp3'
+}, {
+  name: 'Agomonir Gaan',
+  source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Agomonir.Gaan.Oriplast.Originals.S01.E10.Anupam.Roy.SVF.Music.mp3'
 }, {
   name: 'Ar Koto Raat Aka Thakbo',
   source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Aar.Koto.Raat.Eka.Thakbo.mp3'
@@ -183,6 +193,9 @@ const playlist = [{
   name: 'Jaago Uma',
   source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Jaago.Uma.mp3'
 }, {
+  name: 'Jhinkunakur Na - Rana Mazumder',
+  source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Jhinkunakur.Na.-.Rana.Mazumder.mp3'
+}, {
   name: 'Jodi Hoi Chorkanta - Kishore Kumar',
   source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Jodi.Hoi.Chorkanta.-.Kishore.Kumar.mp3'
 }, {
@@ -204,6 +217,12 @@ const playlist = [{
   name: 'Kotha Kotha Khunjechhi Tomay',
   source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Kotha.Kotha.Khunjechhi.Tomay.mp3'
 }, {
+  name: 'Latai - Vinod Rathod',
+  source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Latai.-.Vinod.Rathod.mp3'
+}, {
+  name: 'Le Paglu Dance - Jeet Gannguli',
+  source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Le.Paglu.Dance.-.Jeet.Gannguli.mp3'
+}, {
   name: 'Maa Go Tui',
   source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Maa.Go.Tui.mp3'
 }, {
@@ -216,8 +235,14 @@ const playlist = [{
   name: 'O Menoka O Menoka',
   source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/O.Menoka.O.Menoka.mp3'
 }, {
+  name: 'Paglu - Mika Singh',
+  source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Paglu.-.Mika.Singh.mp3'
+}, {
   name: 'Projaapati E Mon',
   source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Projaapati.E.Mon.mp3'
+}, {
+  name: 'Pyarelal From (Dui Prithibi) - Samidh',
+  source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Pyarelal.From._Dui.Prithibi_.-.Samidh.mp3'
 }, {
   name: 'Sagarika Sagarika',
   source: 'https://github.com/arijitprasad980-arx/Pujo_songs/releases/download/pujo_songs/Sagarika.Sagarika.mp3'
@@ -528,9 +553,41 @@ function toggleMahalaya() {
 
 function updateMahalayaTimeline() {
   if (!Number.isFinite(mahalayaAudio.duration)) return;
+  mahalayaScreen.classList.add('is-player-ready');
   mahalayaTimeline.max = mahalayaAudio.duration;
   mahalayaTimeline.value = mahalayaAudio.currentTime;
+  updateTimeDisplay(mahalayaAudio, mahalayaTimeDisplay);
   mahalayaTimeline.disabled = false;
+}
+
+function formatTime(seconds, includeHours = false) {
+  if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor(seconds / 60);
+  const minutePart = includeHours ? String(minutes % 60).padStart(2, '0') : minutes;
+  if (includeHours && hours > 0) return `${hours}:${minutePart}`;
+  return `${minutePart}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
+}
+
+function updateTimeDisplay(audio, display, includeHours = false) {
+  const [elapsed, total] = display.querySelectorAll('span');
+  elapsed.textContent = formatTime(audio.currentTime, includeHours);
+  total.textContent = formatTime(audio.duration, includeHours);
+}
+
+function updatePlaylistProgress() {
+  playlistItems.querySelectorAll('li').forEach((item) => {
+    const index = Number(item.dataset.trackIndex);
+    const timeline = item.querySelector('.track-timeline');
+    const [elapsed, total] = item.querySelectorAll('.track-time span');
+    const isCurrent = index === currentSong;
+    const duration = isCurrent && Number.isFinite(songsAudio.duration) ? songsAudio.duration : 0;
+    timeline.max = duration;
+    timeline.value = isCurrent ? songsAudio.currentTime : 0;
+    timeline.disabled = !isCurrent || !duration;
+    elapsed.textContent = isCurrent ? formatTime(songsAudio.currentTime) : '0:00';
+    total.textContent = formatTime(duration);
+  });
 }
 
 function updateMahalayaControls() {
@@ -555,6 +612,7 @@ function renderPlaylist() {
   playlistItems.innerHTML = '';
   playlist.forEach((track, index) => {
     const item = document.createElement('li');
+    item.dataset.trackIndex = index;
     const button = document.createElement('button');
     button.type = 'button';
     button.textContent = track.name;
@@ -566,6 +624,25 @@ function renderPlaylist() {
         playSong(index);
       }
     });
+    const progress = document.createElement('div');
+    progress.className = 'track-progress';
+    const timeline = document.createElement('input');
+    timeline.type = 'range';
+    timeline.className = 'track-timeline';
+    timeline.min = '0';
+    timeline.max = '0';
+    timeline.step = '0.1';
+    timeline.value = '0';
+    timeline.disabled = true;
+    timeline.setAttribute('aria-label', `Seek ${track.name}`);
+    timeline.addEventListener('input', (event) => {
+      event.stopPropagation();
+      if (index === currentSong) songsAudio.currentTime = Number(timeline.value);
+    });
+    const time = document.createElement('div');
+    time.className = 'track-time time-display';
+    time.innerHTML = '<span>0:00</span><span>0:00</span>';
+    progress.append(timeline, time);
     const controls = document.createElement('div');
     controls.className = 'track-controls';
     [['previous', 'Previous'], ['play-pause', 'Play'], ['next', 'Next']].forEach(([action, label]) => {
@@ -593,10 +670,11 @@ function renderPlaylist() {
       });
       controls.append(control);
     });
-    item.append(button, controls);
+    item.append(button, controls, progress);
     playlistItems.append(item);
   });
   updatePlaylistControls();
+  updatePlaylistProgress();
 }
 
 function playSong(index = 0) {
@@ -784,6 +862,9 @@ songsAudio.addEventListener('play', () => {
 });
 songsAudio.addEventListener('playing', () => setSongLoading(false));
 songsAudio.addEventListener('error', () => setSongLoading(false));
+ songsAudio.addEventListener('loadedmetadata', updatePlaylistProgress);
+ songsAudio.addEventListener('durationchange', updatePlaylistProgress);
+ songsAudio.addEventListener('timeupdate', updatePlaylistProgress);
 songsAudio.addEventListener('pause', () => {
   songsScreen.classList.remove('is-playing');
   stopEffectVideo();
