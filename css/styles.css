@@ -489,15 +489,39 @@ body {
   transform: translateX(-50%);
 }
 
+.time-display {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.mahalaya-time-display {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: calc(7% + 40px);
+  width: min(42%, 460px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  text-shadow: none;
+  -webkit-text-stroke: 0.75px #000;
+  transform: translateX(-50%);
+}
+
 .mahalaya-controls.is-player-hidden,
-.mahalaya-timeline.is-player-hidden {
+.mahalaya-timeline.is-player-hidden,
+.mahalaya-time-display.is-player-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
 }
 
 #page-mahalaya.is-player-ready .mahalaya-controls,
-#page-mahalaya.is-player-ready .mahalaya-timeline {
+#page-mahalaya.is-player-ready .mahalaya-timeline,
+#page-mahalaya.is-player-ready .mahalaya-time-display {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
@@ -507,6 +531,14 @@ body {
 .mahalaya-timeline:disabled {
   opacity: 0.45;
   cursor: wait;
+}
+
+.mahalaya-timeline:focus,
+.mahalaya-timeline:focus-visible,
+.track-timeline:focus,
+.track-timeline:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 
 .mahalaya-control {
@@ -529,6 +561,13 @@ body {
 .mahalaya-control:focus-visible {
   border-color: #f2bf66;
   color: #f2bf66;
+}
+
+.hotspot-radio:focus,
+.hotspot-radio:focus-visible,
+.mahalaya-control:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 #page-mahalaya.is-playing .radio-glow {
@@ -745,6 +784,31 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 8px;
   transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.track-progress {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 1px;
+  padding: 0 0 7px;
+}
+
+.track-timeline {
+  display: block;
+  width: 100%;
+  height: 14px;
+  accent-color: #f2bf66;
+  cursor: pointer;
+}
+
+.track-timeline:disabled {
+  opacity: 0.42;
+  cursor: default;
+}
+
+.track-time {
+  color: rgba(255, 240, 173, 0.7);
+  font-size: 10px;
 }
 
 #playlist-items li:hover {
