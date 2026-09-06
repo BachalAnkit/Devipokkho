@@ -484,7 +484,7 @@ body {
   width: min(42%, 460px);
   height: 18px;
   margin: 0;
-  accent-color: #f2bf66;
+  accent-color: #ffffff; /* সাদা টাইমলাইন বার */
   cursor: pointer;
   transform: translateX(-50%);
 }
@@ -492,7 +492,7 @@ body {
 .time-display {
   display: flex;
   justify-content: space-between;
-  color: rgba(255, 255, 255, 0.84);
+  color: #000000; /* কালো টেক্সট */
   font-size: 11px;
   font-variant-numeric: tabular-nums;
 }
@@ -503,11 +503,11 @@ body {
   left: 50%;
   bottom: calc(7% + 40px);
   width: min(42%, 460px);
-  color: #fff;
+  color: #000000; /* কালো টেক্সট */
   font-size: 12px;
   font-weight: 800;
   text-shadow: none;
-  -webkit-text-stroke: 0.75px #000;
+  -webkit-text-stroke: 0; /* কালো আউটলাইন মুছে দেওয়া হয়েছে */
   transform: translateX(-50%);
 }
 
@@ -1239,7 +1239,7 @@ body {
 }
 
 /* =========================================
-   Merged from inline HTML <style> tags 
+    Merged from inline HTML <style> tags 
 ========================================= */
 
 /* Menu Anti-Lag & Always-on-Top Optimization */
